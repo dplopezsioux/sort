@@ -1,13 +1,13 @@
 module.exports = function sortCategoriesForInsert(inputJson) {
-  let jsonVlaue = [];
-  if (typeof inputJson == "string") jsonVlaue = JSON.parse(inputJson);
-  else jsonVlaue = [].concat(inputJson);
-
   let properJsonOutput = [];
-  jsonVlaue.forEach((element) => {
-    if (element.parent_id == null) properJsonOutput.unshift(element);
-    else properJsonOutput.push(element);
+  
+  if (typeof inputJson == "string") properJsonOutput = JSON.parse(inputJson);
+  else properJsonOutput = [].concat(inputJson);
+
+  properJsonOutput.sort((a, b) => {
+    if (a.parent_id == null) return -1;
+    else return 1;
   });
 
   return properJsonOutput;
-};
+}
