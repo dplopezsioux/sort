@@ -1,5 +1,5 @@
 module.exports = function sortCategoriesForInsert(inputJson) {
-  let jsonVlaue;
+  let jsonVlaue = [];
   if (typeof inputJson == "string") jsonVlaue = JSON.parse(inputJson);
   else jsonVlaue = [].concat(inputJson);
 
@@ -11,5 +11,3 @@ module.exports = function sortCategoriesForInsert(inputJson) {
 
   return properJsonOutput;
 };
-
-console.log(sortCategoriesForInsert(value));
