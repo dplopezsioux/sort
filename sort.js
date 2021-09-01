@@ -4,11 +4,13 @@ module.exports = function sortCategoriesForInsert(inputJson) {
   if (typeof inputJson == "string") properJsonOutput = JSON.parse(inputJson);
   else properJsonOutput = [].concat(inputJson);
 
-  properJsonOutput.sort((a, b) => {
+properJsonOutput.sort((a, b) => {
     if (a.parent_id == null) return -1;
 
-    return a.parent_id - b.id;
+    let pID = a.parent_id;
+    if (a.parent_id == null) pID = -1;
+    return pID - b.id;
   });
-
+  
   return properJsonOutput;
 };
